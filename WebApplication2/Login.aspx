@@ -30,15 +30,16 @@
                 <div class="login-form">
                     <form id="form1" runat="server">
                         <div class="form-group">
-                            <label>User Name</label>
-                            <input type="text" class="form-control" placeholder="User Name"/>
+                            <label>工号</label>
+                            <input id="txtWorkID" type="text" class="form-control" placeholder="Work ID" runat="server"/>
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password"/>
+                            <label>密码</label>
+                            <input id="txtPassword" type="password" class="form-control" placeholder="Password" runat="server"/>
                         </div>
-                        <button type="submit" class="btn btn-black">Login</button>
-                        <button type="submit" class="btn btn-secondary">Register</button>
+                        <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-black" Text="Login" OnClick="btnLogin_Click" />
+                        <%--<button type="submit" class="btn btn-black">Login</button>
+                        <button type="submit" class="btn btn-secondary">Register</button>--%>
                     </form>
                 </div>
             </div>

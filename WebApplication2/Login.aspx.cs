@@ -13,5 +13,31 @@ namespace WebApplication2
         {
 
         }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            using (var db = new irixi_mfg_module_Entities())
+            {
+                var login_user = db.user.FirstOrDefault(u => u.workid == txtWorkID.Value);
+
+                if (login_user == null)
+                {
+
+                }
+                else
+                {
+                    // check password.
+                    if (login_user.password != txtPassword.Value)
+                    {
+                        // password is error.
+                    }
+                    else
+                    {
+                        // successful!
+                        Response.Write("Login Successfully!");
+                    }
+                }
+            }
+        }
     }
 }

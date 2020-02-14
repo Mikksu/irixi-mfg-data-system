@@ -1,0 +1,1076 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="irixi_mfg_moduleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="definition_department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="verbose" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="definition_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="verbose" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="workid" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="is_disabled" Type="bit" Nullable="false" />
+          <Property Name="who_added" Type="int" />
+        </EntityType>
+        <EntityType Name="product_Info">
+          <Key>
+            <PropertyRef Name="sn" />
+          </Key>
+          <Property Name="sn" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="pn" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="tosa_sn" Type="nchar" MaxLength="20" />
+          <Property Name="tosa_lot" Type="nchar" MaxLength="20" />
+          <Property Name="rosa_sn" Type="nchar" MaxLength="20" />
+          <Property Name="rosa_lot" Type="nchar" MaxLength="20" />
+          <Property Name="pcba_sn" Type="nchar" MaxLength="20" />
+          <Property Name="pcba_lot" Type="nchar" MaxLength="20" />
+          <Property Name="operator_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sn_changelog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="old_sn" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="new_sn" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="operator_id" Type="int" Nullable="false" />
+          <Property Name="station" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="baseinfo_id" />
+          </Key>
+          <Property Name="baseinfo_id" Type="int" Nullable="false" />
+          <Property Name="volt__min" Type="float" Nullable="false" />
+          <Property Name="volt__max" Type="float" Nullable="false" />
+          <Property Name="icc__min" Type="float" Nullable="false" />
+          <Property Name="icc__max" Type="float" Nullable="false" />
+          <Property Name="consumption__min" Type="float" Nullable="false" />
+          <Property Name="consumption__max" Type="float" Nullable="false" />
+          <Property Name="tx_lop__min" Type="float" Nullable="false" />
+          <Property Name="tx_lop__max" Type="float" Nullable="false" />
+          <Property Name="er__min" Type="float" Nullable="false" />
+          <Property Name="er__max" Type="float" Nullable="false" />
+          <Property Name="emm__min" Type="float" Nullable="false" />
+          <Property Name="emm__max" Type="float" Nullable="false" />
+          <Property Name="crossing__min" Type="float" Nullable="false" />
+          <Property Name="crossing__max" Type="float" Nullable="false" />
+          <Property Name="jitter_pp__min" Type="float" Nullable="false" />
+          <Property Name="jitter_pp__max" Type="float" Nullable="false" />
+          <Property Name="jitter_rms__min" Type="float" Nullable="false" />
+          <Property Name="jitter_rms__max" Type="float" Nullable="false" />
+          <Property Name="tx_rise_time__min" Type="float" Nullable="false" />
+          <Property Name="tx_rise_time__max" Type="float" Nullable="false" />
+          <Property Name="tx_fall_time__min" Type="float" Nullable="false" />
+          <Property Name="tx_fall_time__max" Type="float" Nullable="false" />
+          <Property Name="tx_dis_lop__min" Type="float" Nullable="false" />
+          <Property Name="tx_dis_lop__max" Type="float" Nullable="false" />
+          <Property Name="sens_e12__min" Type="float" Nullable="false" />
+          <Property Name="sens_e12__max" Type="float" Nullable="false" />
+          <Property Name="sens_oma_e12__min" Type="float" Nullable="false" />
+          <Property Name="sens_oma_e12__max" Type="float" Nullable="false" />
+          <Property Name="sens_5e5__min" Type="float" Nullable="false" />
+          <Property Name="sens_5e5__max" Type="float" Nullable="false" />
+          <Property Name="sens_oma_5e5__min" Type="float" Nullable="false" />
+          <Property Name="sens_oma_5e5__max" Type="float" Nullable="false" />
+          <Property Name="losa__min" Type="float" Nullable="false" />
+          <Property Name="losa__max" Type="float" Nullable="false" />
+          <Property Name="losd__min" Type="float" Nullable="false" />
+          <Property Name="losd__max" Type="float" Nullable="false" />
+          <Property Name="losh__min" Type="float" Nullable="false" />
+          <Property Name="losh__max" Type="float" Nullable="false" />
+          <Property Name="dut_temps__min" Type="float" Nullable="false" />
+          <Property Name="dut_temps__max" Type="float" Nullable="false" />
+          <Property Name="ddm_temps__min" Type="float" Nullable="false" />
+          <Property Name="ddm_temps__max" Type="float" Nullable="false" />
+          <Property Name="ddm_temps_error__min" Type="float" Nullable="false" />
+          <Property Name="ddm_temps_error__max" Type="float" Nullable="false" />
+          <Property Name="ddm_tx_power__min" Type="float" Nullable="false" />
+          <Property Name="ddm_tx_power__max" Type="float" Nullable="false" />
+          <Property Name="ddm_tx_power_error__min" Type="float" Nullable="false" />
+          <Property Name="ddm_tx_power_error__max" Type="float" Nullable="false" />
+          <Property Name="ddm_rx_power__min" Type="float" Nullable="false" />
+          <Property Name="ddm_rx_power__max" Type="float" Nullable="false" />
+          <Property Name="ddm_rx_power_error__min" Type="float" Nullable="false" />
+          <Property Name="ddm_rx_power_error__max" Type="float" Nullable="false" />
+          <Property Name="ddm_bias__min" Type="float" Nullable="false" />
+          <Property Name="ddm_bias__max" Type="float" Nullable="false" />
+          <Property Name="ddm_vcc__min" Type="float" Nullable="false" />
+          <Property Name="ddm_vcc__max" Type="float" Nullable="false" />
+          <Property Name="ddm_vcc_error__min" Type="float" Nullable="false" />
+          <Property Name="ddm_vcc_error__max" Type="float" Nullable="false" />
+          <Property Name="tx_oma__min" Type="float" Nullable="false" />
+          <Property Name="tx_oma__max" Type="float" Nullable="false" />
+          <Property Name="overload__min" Type="float" Nullable="false" />
+          <Property Name="overload__max" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spec_baseinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pn" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="temp" Type="numeric" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="verson" Type="int" Nullable="false" />
+          <Property Name="operator_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spec_extended">
+          <Key>
+            <PropertyRef Name="baseinfo_id" />
+          </Key>
+          <Property Name="baseinfo_id" Type="int" Nullable="false" />
+          <Property Name="tdp__min" Type="float" Nullable="false" />
+          <Property Name="tdp__max" Type="float" Nullable="false" />
+          <Property Name="center_wl__min" Type="float" Nullable="false" />
+          <Property Name="center_wl__max" Type="float" Nullable="false" />
+          <Property Name="smsr__min" Type="float" Nullable="false" />
+          <Property Name="smsr__max" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test_result">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baseinfo_id" Type="int" Nullable="false" />
+          <Property Name="volt" Type="float" Nullable="false" />
+          <Property Name="icc" Type="float" Nullable="false" />
+          <Property Name="consumption" Type="float" Nullable="false" />
+          <Property Name="tx_lop" Type="float" Nullable="false" />
+          <Property Name="er" Type="float" Nullable="false" />
+          <Property Name="emm" Type="float" Nullable="false" />
+          <Property Name="crossing" Type="float" Nullable="false" />
+          <Property Name="jitter_pp" Type="float" Nullable="false" />
+          <Property Name="jitter_rms" Type="float" Nullable="false" />
+          <Property Name="tx_rise_time" Type="float" Nullable="false" />
+          <Property Name="tx_fall_time" Type="float" Nullable="false" />
+          <Property Name="tx_dis_lop" Type="float" Nullable="false" />
+          <Property Name="sens_n12" Type="float" Nullable="false" />
+          <Property Name="sens_oma_e12" Type="float" Nullable="false" />
+          <Property Name="sens_5e5" Type="float" Nullable="false" />
+          <Property Name="sens_oma_5e5" Type="float" Nullable="false" />
+          <Property Name="losa" Type="float" Nullable="false" />
+          <Property Name="losd" Type="float" Nullable="false" />
+          <Property Name="losh" Type="float" Nullable="false" />
+          <Property Name="dut_temps" Type="float" Nullable="false" />
+          <Property Name="ddm_temps" Type="float" Nullable="false" />
+          <Property Name="ddm_temps_error" Type="float" Nullable="false" />
+          <Property Name="ddm_tx_power" Type="float" Nullable="false" />
+          <Property Name="ddm_tx_power_error" Type="float" Nullable="false" />
+          <Property Name="ddm_rx_power" Type="float" Nullable="false" />
+          <Property Name="ddm_rx_power_error" Type="float" Nullable="false" />
+          <Property Name="ddm_bias" Type="float" Nullable="false" />
+          <Property Name="ddm_vcc" Type="float" Nullable="false" />
+          <Property Name="ddm_vcc_error" Type="float" Nullable="false" />
+          <Property Name="tx_oma" Type="float" Nullable="false" />
+          <Property Name="overload" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test_result_baseinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sn" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="spec_id" Type="int" Nullable="false" />
+          <Property Name="operator_id" Type="int" Nullable="false" />
+          <Property Name="pf" Type="bit" Nullable="false" />
+          <Property Name="fw_version" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="test_date" Type="datetime" Nullable="false" />
+          <Property Name="test_station" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test_result_extended">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baseinfo_id" Type="int" Nullable="false" />
+          <Property Name="tdp" Type="float" Nullable="false" />
+          <Property Name="center_wl" Type="float" Nullable="false" />
+          <Property Name="smsr" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_sn_changelog_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="sn_changelog" Type="Self.sn_changelog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sn_changelog">
+              <PropertyRef Name="operator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spec_baseinfo_spec">
+          <End Role="spec" Type="Self.spec" Multiplicity="1" />
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="spec">
+              <PropertyRef Name="baseinfo_id" />
+            </Principal>
+            <Dependent Role="spec_baseinfo">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spec_baseinfo_spec_extended">
+          <End Role="spec_extended" Type="Self.spec_extended" Multiplicity="1" />
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="spec_extended">
+              <PropertyRef Name="baseinfo_id" />
+            </Principal>
+            <Dependent Role="spec_baseinfo">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spec_baseinfo_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="spec_baseinfo">
+              <PropertyRef Name="operator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_baseinfo_product_Info">
+          <End Role="product_Info" Type="Self.product_Info" Multiplicity="1" />
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_Info">
+              <PropertyRef Name="sn" />
+            </Principal>
+            <Dependent Role="test_result_baseinfo">
+              <PropertyRef Name="sn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_baseinfo_spec_baseinfo">
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="1" />
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spec_baseinfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_result_baseinfo">
+              <PropertyRef Name="spec_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_extended_test_result_baseinfo">
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="1" />
+          <End Role="test_result_extended" Type="Self.test_result_extended" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_result_baseinfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_result_extended">
+              <PropertyRef Name="baseinfo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_test_result_baseinfo">
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="1" />
+          <End Role="test_result" Type="Self.test_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_result_baseinfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_result">
+              <PropertyRef Name="baseinfo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_definition_department">
+          <End Role="definition_department" Type="Self.definition_department" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="definition_department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_definition_role">
+          <End Role="definition_role" Type="Self.definition_role" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="definition_role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="who_added" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="irixi_mfg_moduleModelStoreContainer">
+          <EntitySet Name="definition_department" EntityType="Self.definition_department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="definition_role" EntityType="Self.definition_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_Info" EntityType="Self.product_Info" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="sn_changelog" EntityType="Self.sn_changelog" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="spec" EntityType="Self.spec" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="spec_baseinfo" EntityType="Self.spec_baseinfo" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="spec_extended" EntityType="Self.spec_extended" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="test_result" EntityType="Self.test_result" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="test_result_baseinfo" EntityType="Self.test_result_baseinfo" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <EntitySet Name="test_result_extended" EntityType="Self.test_result_extended" Schema="sfp28_lr_cwdm" store:Type="Tables" />
+          <AssociationSet Name="FK_sn_changelog_user" Association="Self.FK_sn_changelog_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="sn_changelog" EntitySet="sn_changelog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spec_baseinfo_spec" Association="Self.FK_spec_baseinfo_spec">
+            <End Role="spec" EntitySet="spec" />
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spec_baseinfo_spec_extended" Association="Self.FK_spec_baseinfo_spec_extended">
+            <End Role="spec_extended" EntitySet="spec_extended" />
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spec_baseinfo_user" Association="Self.FK_spec_baseinfo_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_baseinfo_product_Info" Association="Self.FK_test_result_baseinfo_product_Info">
+            <End Role="product_Info" EntitySet="product_Info" />
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_baseinfo_spec_baseinfo" Association="Self.FK_test_result_baseinfo_spec_baseinfo">
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_extended_test_result_baseinfo" Association="Self.FK_test_result_extended_test_result_baseinfo">
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+            <End Role="test_result_extended" EntitySet="test_result_extended" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_test_result_baseinfo" Association="Self.FK_test_result_test_result_baseinfo">
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+            <End Role="test_result" EntitySet="test_result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_definition_department" Association="Self.FK_user_definition_department">
+            <End Role="definition_department" EntitySet="definition_department" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_definition_role" Association="Self.FK_user_definition_role">
+            <End Role="definition_role" EntitySet="definition_role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_user" Association="Self.FK_user_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user1" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="irixi_mfg_module_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="definition_department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="verbose" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_definition_department" FromRole="definition_department" ToRole="user" />
+        </EntityType>
+        <EntityType Name="definition_role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="verbose" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_definition_role" FromRole="definition_role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="workid" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="is_disabled" Type="Boolean" Nullable="false" />
+          <Property Name="who_added" Type="Int32" />
+          <NavigationProperty Name="definition_department" Relationship="Self.FK_user_definition_department" FromRole="user" ToRole="definition_department" />
+          <NavigationProperty Name="definition_role" Relationship="Self.FK_user_definition_role" FromRole="user" ToRole="definition_role" />
+          <NavigationProperty Name="sn_changelog" Relationship="Self.FK_sn_changelog_user" FromRole="user" ToRole="sn_changelog" />
+          <NavigationProperty Name="spec_baseinfo" Relationship="Self.FK_spec_baseinfo_user" FromRole="user" ToRole="spec_baseinfo" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_user_user" FromRole="user" ToRole="user1" />
+          <NavigationProperty Name="user2" Relationship="Self.FK_user_user" FromRole="user1" ToRole="user" />
+        </EntityType>
+        <EntityType Name="product_Info">
+          <Key>
+            <PropertyRef Name="sn" />
+          </Key>
+          <Property Name="sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="pn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="tosa_sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="tosa_lot" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="rosa_sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="rosa_lot" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="pcba_sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="pcba_lot" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="operator_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="test_result_baseinfo" Relationship="Self.FK_test_result_baseinfo_product_Info" FromRole="product_Info" ToRole="test_result_baseinfo" />
+        </EntityType>
+        <EntityType Name="sn_changelog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="old_sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="new_sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="operator_id" Type="Int32" Nullable="false" />
+          <Property Name="station" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="user" Relationship="Self.FK_sn_changelog_user" FromRole="sn_changelog" ToRole="user" />
+        </EntityType>
+        <EntityType Name="spec">
+          <Key>
+            <PropertyRef Name="baseinfo_id" />
+          </Key>
+          <Property Name="baseinfo_id" Type="Int32" Nullable="false" />
+          <Property Name="volt__min" Type="Double" Nullable="false" />
+          <Property Name="volt__max" Type="Double" Nullable="false" />
+          <Property Name="icc__min" Type="Double" Nullable="false" />
+          <Property Name="icc__max" Type="Double" Nullable="false" />
+          <Property Name="consumption__min" Type="Double" Nullable="false" />
+          <Property Name="consumption__max" Type="Double" Nullable="false" />
+          <Property Name="tx_lop__min" Type="Double" Nullable="false" />
+          <Property Name="tx_lop__max" Type="Double" Nullable="false" />
+          <Property Name="er__min" Type="Double" Nullable="false" />
+          <Property Name="er__max" Type="Double" Nullable="false" />
+          <Property Name="emm__min" Type="Double" Nullable="false" />
+          <Property Name="emm__max" Type="Double" Nullable="false" />
+          <Property Name="crossing__min" Type="Double" Nullable="false" />
+          <Property Name="crossing__max" Type="Double" Nullable="false" />
+          <Property Name="jitter_pp__min" Type="Double" Nullable="false" />
+          <Property Name="jitter_pp__max" Type="Double" Nullable="false" />
+          <Property Name="jitter_rms__min" Type="Double" Nullable="false" />
+          <Property Name="jitter_rms__max" Type="Double" Nullable="false" />
+          <Property Name="tx_rise_time__min" Type="Double" Nullable="false" />
+          <Property Name="tx_rise_time__max" Type="Double" Nullable="false" />
+          <Property Name="tx_fall_time__min" Type="Double" Nullable="false" />
+          <Property Name="tx_fall_time__max" Type="Double" Nullable="false" />
+          <Property Name="tx_dis_lop__min" Type="Double" Nullable="false" />
+          <Property Name="tx_dis_lop__max" Type="Double" Nullable="false" />
+          <Property Name="sens_e12__min" Type="Double" Nullable="false" />
+          <Property Name="sens_e12__max" Type="Double" Nullable="false" />
+          <Property Name="sens_oma_e12__min" Type="Double" Nullable="false" />
+          <Property Name="sens_oma_e12__max" Type="Double" Nullable="false" />
+          <Property Name="sens_5e5__min" Type="Double" Nullable="false" />
+          <Property Name="sens_5e5__max" Type="Double" Nullable="false" />
+          <Property Name="sens_oma_5e5__min" Type="Double" Nullable="false" />
+          <Property Name="sens_oma_5e5__max" Type="Double" Nullable="false" />
+          <Property Name="losa__min" Type="Double" Nullable="false" />
+          <Property Name="losa__max" Type="Double" Nullable="false" />
+          <Property Name="losd__min" Type="Double" Nullable="false" />
+          <Property Name="losd__max" Type="Double" Nullable="false" />
+          <Property Name="losh__min" Type="Double" Nullable="false" />
+          <Property Name="losh__max" Type="Double" Nullable="false" />
+          <Property Name="dut_temps__min" Type="Double" Nullable="false" />
+          <Property Name="dut_temps__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_temps__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_temps__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_temps_error__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_temps_error__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_tx_power__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_tx_power__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_tx_power_error__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_tx_power_error__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_rx_power__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_rx_power__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_rx_power_error__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_rx_power_error__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_bias__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_bias__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_vcc__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_vcc__max" Type="Double" Nullable="false" />
+          <Property Name="ddm_vcc_error__min" Type="Double" Nullable="false" />
+          <Property Name="ddm_vcc_error__max" Type="Double" Nullable="false" />
+          <Property Name="tx_oma__min" Type="Double" Nullable="false" />
+          <Property Name="tx_oma__max" Type="Double" Nullable="false" />
+          <Property Name="overload__min" Type="Double" Nullable="false" />
+          <Property Name="overload__max" Type="Double" Nullable="false" />
+          <NavigationProperty Name="spec_baseinfo" Relationship="Self.FK_spec_baseinfo_spec" FromRole="spec" ToRole="spec_baseinfo" />
+        </EntityType>
+        <EntityType Name="spec_baseinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pn" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="temp" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="verson" Type="Int32" Nullable="false" />
+          <Property Name="operator_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="user" Relationship="Self.FK_spec_baseinfo_user" FromRole="spec_baseinfo" ToRole="user" />
+          <NavigationProperty Name="spec" Relationship="Self.FK_spec_baseinfo_spec" FromRole="spec_baseinfo" ToRole="spec" />
+          <NavigationProperty Name="test_result_baseinfo" Relationship="Self.FK_test_result_baseinfo_spec_baseinfo" FromRole="spec_baseinfo" ToRole="test_result_baseinfo" />
+          <NavigationProperty Name="spec_extended" Relationship="irixi_mfg_module_Model.FK_spec_baseinfo_spec_extended" FromRole="spec_baseinfo" ToRole="spec_extended" />
+        </EntityType>
+        <EntityType Name="test_result">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baseinfo_id" Type="Int32" Nullable="false" />
+          <Property Name="volt" Type="Double" Nullable="false" />
+          <Property Name="icc" Type="Double" Nullable="false" />
+          <Property Name="consumption" Type="Double" Nullable="false" />
+          <Property Name="tx_lop" Type="Double" Nullable="false" />
+          <Property Name="er" Type="Double" Nullable="false" />
+          <Property Name="emm" Type="Double" Nullable="false" />
+          <Property Name="crossing" Type="Double" Nullable="false" />
+          <Property Name="jitter_pp" Type="Double" Nullable="false" />
+          <Property Name="jitter_rms" Type="Double" Nullable="false" />
+          <Property Name="tx_rise_time" Type="Double" Nullable="false" />
+          <Property Name="tx_fall_time" Type="Double" Nullable="false" />
+          <Property Name="tx_dis_lop" Type="Double" Nullable="false" />
+          <Property Name="sens_n12" Type="Double" Nullable="false" />
+          <Property Name="sens_oma_e12" Type="Double" Nullable="false" />
+          <Property Name="sens_5e5" Type="Double" Nullable="false" />
+          <Property Name="sens_oma_5e5" Type="Double" Nullable="false" />
+          <Property Name="losa" Type="Double" Nullable="false" />
+          <Property Name="losd" Type="Double" Nullable="false" />
+          <Property Name="losh" Type="Double" Nullable="false" />
+          <Property Name="dut_temps" Type="Double" Nullable="false" />
+          <Property Name="ddm_temps" Type="Double" Nullable="false" />
+          <Property Name="ddm_temps_error" Type="Double" Nullable="false" />
+          <Property Name="ddm_tx_power" Type="Double" Nullable="false" />
+          <Property Name="ddm_tx_power_error" Type="Double" Nullable="false" />
+          <Property Name="ddm_rx_power" Type="Double" Nullable="false" />
+          <Property Name="ddm_rx_power_error" Type="Double" Nullable="false" />
+          <Property Name="ddm_bias" Type="Double" Nullable="false" />
+          <Property Name="ddm_vcc" Type="Double" Nullable="false" />
+          <Property Name="ddm_vcc_error" Type="Double" Nullable="false" />
+          <Property Name="tx_oma" Type="Double" Nullable="false" />
+          <Property Name="overload" Type="Double" Nullable="false" />
+          <NavigationProperty Name="test_result_baseinfo" Relationship="irixi_mfg_module_Model.FK_test_result_test_result_baseinfo" FromRole="test_result" ToRole="test_result_baseinfo" />
+        </EntityType>
+        <EntityType Name="test_result_baseinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="spec_id" Type="Int32" Nullable="false" />
+          <Property Name="operator_id" Type="Int32" Nullable="false" />
+          <Property Name="pf" Type="Boolean" Nullable="false" />
+          <Property Name="fw_version" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="test_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="test_station" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="product_Info" Relationship="Self.FK_test_result_baseinfo_product_Info" FromRole="test_result_baseinfo" ToRole="product_Info" />
+          <NavigationProperty Name="spec_baseinfo" Relationship="Self.FK_test_result_baseinfo_spec_baseinfo" FromRole="test_result_baseinfo" ToRole="spec_baseinfo" />
+          <NavigationProperty Name="test_result_extended" Relationship="Self.FK_test_result_extended_test_result_baseinfo" FromRole="test_result_baseinfo" ToRole="test_result_extended" />
+          <NavigationProperty Name="test_result" Relationship="irixi_mfg_module_Model.FK_test_result_test_result_baseinfo" FromRole="test_result_baseinfo" ToRole="test_result" />
+        </EntityType>
+        <EntityType Name="test_result_extended">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baseinfo_id" Type="Int32" Nullable="false" />
+          <Property Name="tdp" Type="Double" Nullable="false" />
+          <Property Name="center_wl" Type="Double" Nullable="false" />
+          <Property Name="smsr" Type="Double" Nullable="false" />
+          <NavigationProperty Name="test_result_baseinfo" Relationship="Self.FK_test_result_extended_test_result_baseinfo" FromRole="test_result_extended" ToRole="test_result_baseinfo" />
+        </EntityType>
+        <Association Name="FK_user_definition_department">
+          <End Role="definition_department" Type="Self.definition_department" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="definition_department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_definition_role">
+          <End Role="definition_role" Type="Self.definition_role" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="definition_role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sn_changelog_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="sn_changelog" Type="Self.sn_changelog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sn_changelog">
+              <PropertyRef Name="operator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spec_baseinfo_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="spec_baseinfo">
+              <PropertyRef Name="operator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="who_added" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_baseinfo_product_Info">
+          <End Role="product_Info" Type="Self.product_Info" Multiplicity="1" />
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_Info">
+              <PropertyRef Name="sn" />
+            </Principal>
+            <Dependent Role="test_result_baseinfo">
+              <PropertyRef Name="sn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_spec_baseinfo_spec">
+          <End Role="spec" Type="Self.spec" Multiplicity="1" />
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="spec">
+              <PropertyRef Name="baseinfo_id" />
+            </Principal>
+            <Dependent Role="spec_baseinfo">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_baseinfo_spec_baseinfo">
+          <End Role="spec_baseinfo" Type="Self.spec_baseinfo" Multiplicity="1" />
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="spec_baseinfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_result_baseinfo">
+              <PropertyRef Name="spec_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_result_extended_test_result_baseinfo">
+          <End Role="test_result_baseinfo" Type="Self.test_result_baseinfo" Multiplicity="1" />
+          <End Role="test_result_extended" Type="Self.test_result_extended" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_result_baseinfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_result_extended">
+              <PropertyRef Name="baseinfo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="irixi_mfg_module_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="definition_department" EntityType="Self.definition_department" />
+          <EntitySet Name="definition_role" EntityType="Self.definition_role" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="product_Info" EntityType="Self.product_Info" />
+          <EntitySet Name="sn_changelog" EntityType="Self.sn_changelog" />
+          <EntitySet Name="spec" EntityType="Self.spec" />
+          <EntitySet Name="spec_baseinfo" EntityType="Self.spec_baseinfo" />
+          <EntitySet Name="test_result" EntityType="Self.test_result" />
+          <EntitySet Name="test_result_baseinfo" EntityType="Self.test_result_baseinfo" />
+          <EntitySet Name="test_result_extended" EntityType="Self.test_result_extended" />
+          <AssociationSet Name="FK_user_definition_department" Association="Self.FK_user_definition_department">
+            <End Role="definition_department" EntitySet="definition_department" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_definition_role" Association="Self.FK_user_definition_role">
+            <End Role="definition_role" EntitySet="definition_role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sn_changelog_user" Association="Self.FK_sn_changelog_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="sn_changelog" EntitySet="sn_changelog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spec_baseinfo_user" Association="Self.FK_spec_baseinfo_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_user" Association="Self.FK_user_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user1" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_baseinfo_product_Info" Association="Self.FK_test_result_baseinfo_product_Info">
+            <End Role="product_Info" EntitySet="product_Info" />
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_spec_baseinfo_spec" Association="Self.FK_spec_baseinfo_spec">
+            <End Role="spec" EntitySet="spec" />
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_baseinfo_spec_baseinfo" Association="Self.FK_test_result_baseinfo_spec_baseinfo">
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_extended_test_result_baseinfo" Association="Self.FK_test_result_extended_test_result_baseinfo">
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+            <End Role="test_result_extended" EntitySet="test_result_extended" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_result_test_result_baseinfo" Association="irixi_mfg_module_Model.FK_test_result_test_result_baseinfo">
+            <End Role="test_result_baseinfo" EntitySet="test_result_baseinfo" />
+            <End Role="test_result" EntitySet="test_result" />
+          </AssociationSet>
+          <EntitySet Name="spec_extended" EntityType="irixi_mfg_module_Model.spec_extended" />
+          <AssociationSet Name="FK_spec_baseinfo_spec_extended" Association="irixi_mfg_module_Model.FK_spec_baseinfo_spec_extended">
+            <End Role="spec_extended" EntitySet="spec_extended" />
+            <End Role="spec_baseinfo" EntitySet="spec_baseinfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_test_result_test_result_baseinfo">
+          <End Type="irixi_mfg_module_Model.test_result_baseinfo" Role="test_result_baseinfo" Multiplicity="1" />
+          <End Type="irixi_mfg_module_Model.test_result" Role="test_result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_result_baseinfo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="test_result">
+              <PropertyRef Name="baseinfo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="spec_extended">
+          <Key>
+            <PropertyRef Name="baseinfo_id" />
+          </Key>
+          <Property Name="baseinfo_id" Type="Int32" Nullable="false" />
+          <Property Name="tdp__min" Type="Double" Nullable="false" />
+          <Property Name="tdp__max" Type="Double" Nullable="false" />
+          <Property Name="center_wl__min" Type="Double" Nullable="false" />
+          <Property Name="center_wl__max" Type="Double" Nullable="false" />
+          <Property Name="smsr__min" Type="Double" Nullable="false" />
+          <Property Name="smsr__max" Type="Double" Nullable="false" />
+          <NavigationProperty Name="spec_baseinfo" Relationship="irixi_mfg_module_Model.FK_spec_baseinfo_spec_extended" FromRole="spec_extended" ToRole="spec_baseinfo" />
+        </EntityType>
+        <Association Name="FK_spec_baseinfo_spec_extended">
+          <End Type="irixi_mfg_module_Model.spec_extended" Role="spec_extended" Multiplicity="1" />
+          <End Type="irixi_mfg_module_Model.spec_baseinfo" Role="spec_baseinfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="spec_extended">
+              <PropertyRef Name="baseinfo_id" />
+            </Principal>
+            <Dependent Role="spec_baseinfo">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="irixi_mfg_moduleModelStoreContainer" CdmEntityContainer="irixi_mfg_module_Entities">
+          <EntitySetMapping Name="definition_department">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.definition_department">
+              <MappingFragment StoreEntitySet="definition_department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="verbose" ColumnName="verbose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="definition_role">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.definition_role">
+              <MappingFragment StoreEntitySet="definition_role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="verbose" ColumnName="verbose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="workid" ColumnName="workid" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="is_disabled" ColumnName="is_disabled" />
+                <ScalarProperty Name="who_added" ColumnName="who_added" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_Info">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.product_Info">
+              <MappingFragment StoreEntitySet="product_Info">
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="pn" ColumnName="pn" />
+                <ScalarProperty Name="tosa_sn" ColumnName="tosa_sn" />
+                <ScalarProperty Name="tosa_lot" ColumnName="tosa_lot" />
+                <ScalarProperty Name="rosa_sn" ColumnName="rosa_sn" />
+                <ScalarProperty Name="rosa_lot" ColumnName="rosa_lot" />
+                <ScalarProperty Name="pcba_sn" ColumnName="pcba_sn" />
+                <ScalarProperty Name="pcba_lot" ColumnName="pcba_lot" />
+                <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sn_changelog">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.sn_changelog">
+              <MappingFragment StoreEntitySet="sn_changelog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="old_sn" ColumnName="old_sn" />
+                <ScalarProperty Name="new_sn" ColumnName="new_sn" />
+                <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+                <ScalarProperty Name="station" ColumnName="station" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spec">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.spec">
+              <MappingFragment StoreEntitySet="spec">
+                <ScalarProperty Name="baseinfo_id" ColumnName="baseinfo_id" />
+                <ScalarProperty Name="volt__min" ColumnName="volt__min" />
+                <ScalarProperty Name="volt__max" ColumnName="volt__max" />
+                <ScalarProperty Name="icc__min" ColumnName="icc__min" />
+                <ScalarProperty Name="icc__max" ColumnName="icc__max" />
+                <ScalarProperty Name="consumption__min" ColumnName="consumption__min" />
+                <ScalarProperty Name="consumption__max" ColumnName="consumption__max" />
+                <ScalarProperty Name="tx_lop__min" ColumnName="tx_lop__min" />
+                <ScalarProperty Name="tx_lop__max" ColumnName="tx_lop__max" />
+                <ScalarProperty Name="er__min" ColumnName="er__min" />
+                <ScalarProperty Name="er__max" ColumnName="er__max" />
+                <ScalarProperty Name="emm__min" ColumnName="emm__min" />
+                <ScalarProperty Name="emm__max" ColumnName="emm__max" />
+                <ScalarProperty Name="crossing__min" ColumnName="crossing__min" />
+                <ScalarProperty Name="crossing__max" ColumnName="crossing__max" />
+                <ScalarProperty Name="jitter_pp__min" ColumnName="jitter_pp__min" />
+                <ScalarProperty Name="jitter_pp__max" ColumnName="jitter_pp__max" />
+                <ScalarProperty Name="jitter_rms__min" ColumnName="jitter_rms__min" />
+                <ScalarProperty Name="jitter_rms__max" ColumnName="jitter_rms__max" />
+                <ScalarProperty Name="tx_rise_time__min" ColumnName="tx_rise_time__min" />
+                <ScalarProperty Name="tx_rise_time__max" ColumnName="tx_rise_time__max" />
+                <ScalarProperty Name="tx_fall_time__min" ColumnName="tx_fall_time__min" />
+                <ScalarProperty Name="tx_fall_time__max" ColumnName="tx_fall_time__max" />
+                <ScalarProperty Name="tx_dis_lop__min" ColumnName="tx_dis_lop__min" />
+                <ScalarProperty Name="tx_dis_lop__max" ColumnName="tx_dis_lop__max" />
+                <ScalarProperty Name="sens_e12__min" ColumnName="sens_e12__min" />
+                <ScalarProperty Name="sens_e12__max" ColumnName="sens_e12__max" />
+                <ScalarProperty Name="sens_oma_e12__min" ColumnName="sens_oma_e12__min" />
+                <ScalarProperty Name="sens_oma_e12__max" ColumnName="sens_oma_e12__max" />
+                <ScalarProperty Name="sens_5e5__min" ColumnName="sens_5e5__min" />
+                <ScalarProperty Name="sens_5e5__max" ColumnName="sens_5e5__max" />
+                <ScalarProperty Name="sens_oma_5e5__min" ColumnName="sens_oma_5e5__min" />
+                <ScalarProperty Name="sens_oma_5e5__max" ColumnName="sens_oma_5e5__max" />
+                <ScalarProperty Name="losa__min" ColumnName="losa__min" />
+                <ScalarProperty Name="losa__max" ColumnName="losa__max" />
+                <ScalarProperty Name="losd__min" ColumnName="losd__min" />
+                <ScalarProperty Name="losd__max" ColumnName="losd__max" />
+                <ScalarProperty Name="losh__min" ColumnName="losh__min" />
+                <ScalarProperty Name="losh__max" ColumnName="losh__max" />
+                <ScalarProperty Name="dut_temps__min" ColumnName="dut_temps__min" />
+                <ScalarProperty Name="dut_temps__max" ColumnName="dut_temps__max" />
+                <ScalarProperty Name="ddm_temps__min" ColumnName="ddm_temps__min" />
+                <ScalarProperty Name="ddm_temps__max" ColumnName="ddm_temps__max" />
+                <ScalarProperty Name="ddm_temps_error__min" ColumnName="ddm_temps_error__min" />
+                <ScalarProperty Name="ddm_temps_error__max" ColumnName="ddm_temps_error__max" />
+                <ScalarProperty Name="ddm_tx_power__min" ColumnName="ddm_tx_power__min" />
+                <ScalarProperty Name="ddm_tx_power__max" ColumnName="ddm_tx_power__max" />
+                <ScalarProperty Name="ddm_tx_power_error__min" ColumnName="ddm_tx_power_error__min" />
+                <ScalarProperty Name="ddm_tx_power_error__max" ColumnName="ddm_tx_power_error__max" />
+                <ScalarProperty Name="ddm_rx_power__min" ColumnName="ddm_rx_power__min" />
+                <ScalarProperty Name="ddm_rx_power__max" ColumnName="ddm_rx_power__max" />
+                <ScalarProperty Name="ddm_rx_power_error__min" ColumnName="ddm_rx_power_error__min" />
+                <ScalarProperty Name="ddm_rx_power_error__max" ColumnName="ddm_rx_power_error__max" />
+                <ScalarProperty Name="ddm_bias__min" ColumnName="ddm_bias__min" />
+                <ScalarProperty Name="ddm_bias__max" ColumnName="ddm_bias__max" />
+                <ScalarProperty Name="ddm_vcc__min" ColumnName="ddm_vcc__min" />
+                <ScalarProperty Name="ddm_vcc__max" ColumnName="ddm_vcc__max" />
+                <ScalarProperty Name="ddm_vcc_error__min" ColumnName="ddm_vcc_error__min" />
+                <ScalarProperty Name="ddm_vcc_error__max" ColumnName="ddm_vcc_error__max" />
+                <ScalarProperty Name="tx_oma__min" ColumnName="tx_oma__min" />
+                <ScalarProperty Name="tx_oma__max" ColumnName="tx_oma__max" />
+                <ScalarProperty Name="overload__min" ColumnName="overload__min" />
+                <ScalarProperty Name="overload__max" ColumnName="overload__max" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spec_baseinfo">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.spec_baseinfo">
+              <MappingFragment StoreEntitySet="spec_baseinfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pn" ColumnName="pn" />
+                <ScalarProperty Name="temp" ColumnName="temp" />
+                <ScalarProperty Name="verson" ColumnName="verson" />
+                <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test_result">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.test_result">
+              <MappingFragment StoreEntitySet="test_result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baseinfo_id" ColumnName="baseinfo_id" />
+                <ScalarProperty Name="volt" ColumnName="volt" />
+                <ScalarProperty Name="icc" ColumnName="icc" />
+                <ScalarProperty Name="consumption" ColumnName="consumption" />
+                <ScalarProperty Name="tx_lop" ColumnName="tx_lop" />
+                <ScalarProperty Name="er" ColumnName="er" />
+                <ScalarProperty Name="emm" ColumnName="emm" />
+                <ScalarProperty Name="crossing" ColumnName="crossing" />
+                <ScalarProperty Name="jitter_pp" ColumnName="jitter_pp" />
+                <ScalarProperty Name="jitter_rms" ColumnName="jitter_rms" />
+                <ScalarProperty Name="tx_rise_time" ColumnName="tx_rise_time" />
+                <ScalarProperty Name="tx_fall_time" ColumnName="tx_fall_time" />
+                <ScalarProperty Name="tx_dis_lop" ColumnName="tx_dis_lop" />
+                <ScalarProperty Name="sens_n12" ColumnName="sens_n12" />
+                <ScalarProperty Name="sens_oma_e12" ColumnName="sens_oma_e12" />
+                <ScalarProperty Name="sens_5e5" ColumnName="sens_5e5" />
+                <ScalarProperty Name="sens_oma_5e5" ColumnName="sens_oma_5e5" />
+                <ScalarProperty Name="losa" ColumnName="losa" />
+                <ScalarProperty Name="losd" ColumnName="losd" />
+                <ScalarProperty Name="losh" ColumnName="losh" />
+                <ScalarProperty Name="dut_temps" ColumnName="dut_temps" />
+                <ScalarProperty Name="ddm_temps" ColumnName="ddm_temps" />
+                <ScalarProperty Name="ddm_temps_error" ColumnName="ddm_temps_error" />
+                <ScalarProperty Name="ddm_tx_power" ColumnName="ddm_tx_power" />
+                <ScalarProperty Name="ddm_tx_power_error" ColumnName="ddm_tx_power_error" />
+                <ScalarProperty Name="ddm_rx_power" ColumnName="ddm_rx_power" />
+                <ScalarProperty Name="ddm_rx_power_error" ColumnName="ddm_rx_power_error" />
+                <ScalarProperty Name="ddm_bias" ColumnName="ddm_bias" />
+                <ScalarProperty Name="ddm_vcc" ColumnName="ddm_vcc" />
+                <ScalarProperty Name="ddm_vcc_error" ColumnName="ddm_vcc_error" />
+                <ScalarProperty Name="tx_oma" ColumnName="tx_oma" />
+                <ScalarProperty Name="overload" ColumnName="overload" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test_result_baseinfo">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.test_result_baseinfo">
+              <MappingFragment StoreEntitySet="test_result_baseinfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="spec_id" ColumnName="spec_id" />
+                <ScalarProperty Name="operator_id" ColumnName="operator_id" />
+                <ScalarProperty Name="pf" ColumnName="pf" />
+                <ScalarProperty Name="fw_version" ColumnName="fw_version" />
+                <ScalarProperty Name="test_date" ColumnName="test_date" />
+                <ScalarProperty Name="test_station" ColumnName="test_station" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test_result_extended">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.test_result_extended">
+              <MappingFragment StoreEntitySet="test_result_extended">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="baseinfo_id" ColumnName="baseinfo_id" />
+                <ScalarProperty Name="tdp" ColumnName="tdp" />
+                <ScalarProperty Name="center_wl" ColumnName="center_wl" />
+                <ScalarProperty Name="smsr" ColumnName="smsr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spec_extended">
+            <EntityTypeMapping TypeName="irixi_mfg_module_Model.spec_extended">
+              <MappingFragment StoreEntitySet="spec_extended">
+                <ScalarProperty Name="smsr__max" ColumnName="smsr__max" />
+                <ScalarProperty Name="smsr__min" ColumnName="smsr__min" />
+                <ScalarProperty Name="center_wl__max" ColumnName="center_wl__max" />
+                <ScalarProperty Name="center_wl__min" ColumnName="center_wl__min" />
+                <ScalarProperty Name="tdp__max" ColumnName="tdp__max" />
+                <ScalarProperty Name="tdp__min" ColumnName="tdp__min" />
+                <ScalarProperty Name="baseinfo_id" ColumnName="baseinfo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
